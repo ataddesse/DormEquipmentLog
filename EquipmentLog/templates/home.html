@@ -1,3 +1,67 @@
-<html>
+{% extends 'base.html' %}
 
-</html>
+{% block title %}Home{% endblock %}
+
+
+{% block body %}
+
+{% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">EquipmentLog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+
+        <a class="nav-link" href="#">Tech-support <span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+   <li class="nav-item "><a href="{% url 'logout' %}">logout</a></li>
+  </div>
+</nav>
+  Hi {{ user.username }}!
+
+
+<h3 align="center">Choose the item you want below:</h3>
+<ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Blue Bin <img src="https://www.bing.com/images/search?view=detailV2&ccid=bPv%2fs8m2&id=A5FFCF338CEE659873F240D85EC8260EC7849F44&thid=OIP.bPv_s8m2h-u2cW-C_Ed09AHaE6&mediaurl=https%3a%2f%2fhousing.umich.edu%2fwp-content%2fuploads%2f2018%2f09%2fbins.jpg&exph=385&expw=580&q=dorm+moving+bin&simid=608048096759646387&selectedIndex=29">
+    <span class="badge badge-primary badge-pill">14</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Table tennis ball and racket
+    <span class="badge badge-primary badge-pill">2</span>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    Morbi leo risus
+    <span class="badge badge-primary badge-pill">1</span>
+  </li>
+</ul>
+
+
+{% else %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">EquipmentLog</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="#">Tech-support <span class="sr-only">(current)</span></a>
+      </li>
+
+    </ul>
+
+  </div>
+</nav>
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
